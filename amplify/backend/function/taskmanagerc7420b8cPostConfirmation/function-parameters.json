@@ -1,0 +1,18 @@
+{
+  "trigger": true,
+  "modules": [
+    "add-to-group"
+  ],
+  "parentResource": "taskmanagerc7420b8c",
+  "functionName": "taskmanagerc7420b8cPostConfirmation",
+  "resourceName": "taskmanagerc7420b8cPostConfirmation",
+  "parentStack": "auth",
+  "triggerEnvs": "[]",
+  "triggerDir": "C:\\Users\\kyash\\AppData\\Roaming\\npm\\node_modules\\@aws-amplify\\cli\\node_modules\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\PostConfirmation",
+  "triggerTemplate": "PostConfirmation.json.ejs",
+  "roleName": "taskmanagerc7420b8cPostConfirmation",
+  "skipEdit": true,
+  "GROUP": "taskManagerUsers",
+  "enableCors": false,
+  "triggerEventPath": "PostConfirmation.event.json"
+}

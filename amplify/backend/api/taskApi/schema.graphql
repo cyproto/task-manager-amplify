@@ -1,0 +1,24 @@
+type Task 
+  @model
+  @aws_iam
+  @aws_cognito_user_pools
+  @auth(
+    rules: [
+      { allow: owner, operations: [create, read, update, delete] }
+      { allow: public, provider: iam, operations: [create, read, update, delete] }
+    ]
+  )
+  {
+    id: ID!
+    name: String!
+    description: String!
+    status: String!
+    track: String!
+    qaName: String!
+    createdOn: String!
+    createdBy: String!
+    priority: String!
+    storyPoints: Int!
+    sprintName: String!
+    releaseDate: AWSTimestamp!    
+  }
