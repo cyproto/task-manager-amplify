@@ -45,7 +45,11 @@
               "userPoolId": "authtaskmanagerc7420b8c"
             }
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
         }
       }
     },
