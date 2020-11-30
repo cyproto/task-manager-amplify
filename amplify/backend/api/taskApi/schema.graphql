@@ -15,10 +15,8 @@ type Task
     status: String!
     track: String!
     qaName: String!
-    createdOn: String!
-    createdBy: String!
     priority: String!
     storyPoints: Int!
     sprintName: String!
-    releaseDate: AWSTimestamp!    
+    releaseDate: String!    
   }
