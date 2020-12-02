@@ -12,6 +12,10 @@
       <input type="text" v-model="sprintName" placeholder="Sprint" />
       <input type="date" v-model="releaseDate" placeholder="Sprint" />
       <button v-on:click="createTask">Create task</button>
+      <div v-for="task in tasks" :key="task.id">
+      <h3>{{ task.name }}</h3>
+      <p>{{ task.description }}</p>
+    </div>
     </div>
     <amplify-sign-out></amplify-sign-out>
   </amplify-authenticator>
@@ -20,9 +24,15 @@
 <script>
 import API from '@aws-amplify/api';
 import { createTask } from "./graphql/mutations";
+import { listTasks } from './graphql/queries';
+import { onCreateTask } from './graphql/subscriptions';
 
 export default {
   name: "App",
+  created() {
+    this.getTasks();
+    this.subscribe();
+  },
   data() {
     return {
       name: "",
@@ -34,6 +44,7 @@ export default {
       storyPoints: 0,
       sprintName: "",
       releaseDate: "",
+      tasks: [],
     };
   },
   methods: {
@@ -70,10 +81,26 @@ export default {
         query: createTask,
         variables: { input: task },
       });
-      for (let key in task) {
-        task[key] = null;
-      }
     },
+    async getTasks() {
+      const tasks = await API.graphql({
+        query: listTasks,
+      });
+      console.log( tasks )
+      this.tasks = tasks.data.listTasks.items;
+      //console.log( this.tasks )
+    },
+    async subscribe() {
+      API.graphql({ query: onCreateTask })
+        .subscribe({
+          next: (eventData) => {
+            let task = eventData.value.data.onCreateTodo;
+            console.log( this.tasks )
+            this.tasks = [...this.tasks, task];
+            console.log( this.tasks )
+          }
+        });
+    }
   },
 };
 </script>
