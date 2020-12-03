@@ -81,6 +81,15 @@ export default {
         query: createTask,
         variables: { input: task },
       });
+      this.name = null;
+      this.description = null;
+      this.status = null;
+      this.track = null;
+      this.qaName = null;
+      this.priority = null;
+      this.storyPoints = null;
+      this.sprintName = null;
+      this.releaseDate = null;
     },
     async getTasks() {
       const tasks = await API.graphql({
