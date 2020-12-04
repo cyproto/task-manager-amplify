@@ -1,6 +1,4 @@
 {
-    "identityPoolName": "taskmanagerc7420b8c_identitypool_c7420b8c",
-    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "taskmac7420b8c",
     "userPoolName": "taskmanagerc7420b8c_userpool_c7420b8c",
     "autoVerifiedAttributes": [
@@ -32,7 +30,7 @@
     "userpoolClientSetAttributes": false,
     "sharedId": "c7420b8c",
     "resourceName": "taskmanagerc7420b8c",
-    "authSelections": "identityPoolAndUserPool",
+    "authSelections": "userPoolOnly",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -45,7 +43,7 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
+    "useDefault": "manual",
     "usernameAttributes": [
         "email"
     ],

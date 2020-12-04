@@ -22,10 +22,9 @@
 </template>
 
 <script>
-import API from '@aws-amplify/api';
+import { API } from '@aws-amplify/api';
 import { createTask } from "./graphql/mutations";
 import { listTasks } from './graphql/queries';
-import { onCreateTask } from './graphql/subscriptions';
 
 export default {
   name: "App",
@@ -90,6 +89,8 @@ export default {
       this.storyPoints = null;
       this.sprintName = null;
       this.releaseDate = null;
+      if (this.tasks.some(item => item.name === task.name)) return;
+      this.tasks = [...this.tasks, task];
     },
     async getTasks() {
       const tasks = await API.graphql({
@@ -98,17 +99,6 @@ export default {
       console.log( tasks )
       this.tasks = tasks.data.listTasks.items;
       //console.log( this.tasks )
-    },
-    async subscribe() {
-      API.graphql({ query: onCreateTask })
-        .subscribe({
-          next: (eventData) => {
-            let task = eventData.value.data.onCreateTodo;
-            console.log( this.tasks )
-            this.tasks = [...this.tasks, task];
-            console.log( this.tasks )
-          }
-        });
     }
   },
 };
