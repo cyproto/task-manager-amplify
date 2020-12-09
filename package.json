@@ -12,7 +12,7 @@
     "aws-amplify": "^3.3.12",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
-    "vuesax": "^3.12.2"
+    "vuesax": "^4.0.1-alpha.25"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
