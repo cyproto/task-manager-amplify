@@ -4,10 +4,64 @@
       <h1>Task system</h1>
       <p>{{ error }}</p>
       <vs-input type="hidden" v-model="id" />
-      <vs-input v-model="name" placeholder="Task title" />
-      <vs-input v-model="description" placeholder="Description" />
-      <vs-input v-model="status" placeholder="Status" />
-      <vs-input v-model="track" placeholder="Track" />
+      <vs-row>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+          <vs-input v-model="name" placeholder="Task title" />
+        </vs-col>
+      </vs-row>
+
+      <vs-row>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+          <vs-input v-model="description" placeholder="Description" />
+        </vs-col>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+          <vs-select placeholder="Status" v-model="status">
+            <vs-option label="New" value="New"> New </vs-option>
+            <vs-option label="Under review" value="Under review"> Under review </vs-option>
+            <vs-option label="On hold" value="On hold"> On hold </vs-option>
+            <vs-option label="Backlog" value="Backlog"> Backlog </vs-option>
+            <vs-option label="Awaiting response" value="Awaiting response">
+              Awaiting response
+            </vs-option>
+            <vs-option label="Dev ready" value="Dev ready"> Dev ready </vs-option>
+            <vs-option label="Dev in Progress" value="Dev in Progress">
+              Dev in Progress
+            </vs-option>
+            <vs-option label="QA Ready" value="QA Ready"> QA Ready </vs-option>
+            <vs-option label="QA in Progress" value="QA in Progress">
+              QA in Progress
+            </vs-option>
+            <vs-option label="Release Ready" value="Release Ready">
+              Release Ready
+            </vs-option>
+            <vs-option label="Committed" value="Committed"> Committed </vs-option>
+            <vs-option label="Released on Stage" value="Released on Stage">
+              Released on Stage
+            </vs-option>
+            <vs-option label="Verified on Stage" value="Verified on Stage">
+              Verified on Stage
+            </vs-option>
+            <vs-option label="Released on Rapid" value="Released on Rapid">
+              Released on Rapid
+            </vs-option>
+            <vs-option label="Verified on Rapid" value="Verified on Rapid">
+              Verified on Rapid
+            </vs-option>
+            <vs-option label="Released on Standard" value="Released on Standard">
+              Released on Standard
+            </vs-option>
+            <vs-option label="Verified on Standard" value="Verified on Standard">
+              Verified on Standard
+            </vs-option>
+            <vs-option label="Completed" value="Completed"> Completed </vs-option>
+            <vs-option label="Cancelled" value="Cancelled"> Cancelled </vs-option>
+          </vs-select>
+        </vs-col>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+          <vs-input v-model="track" placeholder="Track" />
+        </vs-col>
+      </vs-row>
+
       <vs-input v-model="qaName" placeholder="QA name" />
       <vs-input v-model="priority" placeholder="Priority" />
       <vs-input v-model="storyPoints" placeholder="Story points" />
@@ -190,7 +244,7 @@ export default {
       this.storyPoints = null;
       this.sprintName = null;
       this.releaseDate = null;
-      console.log(result)
+      console.log(result);
       if (result.data.updateTask) {
         this.tasks = this.tasks.filter((item) => item.id !== task.id);
       }
