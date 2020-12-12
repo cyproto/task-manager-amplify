@@ -62,11 +62,33 @@
         </vs-col>
       </vs-row>
 
-      <vs-input v-model="qaName" placeholder="QA name" />
-      <vs-input v-model="priority" placeholder="Priority" />
-      <vs-input v-model="storyPoints" placeholder="Story points" />
-      <vs-input v-model="sprintName" placeholder="Sprint" />
-      <vs-input type="date" v-model="releaseDate" />
+      <vs-row>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+          <vs-input v-model="qaName" placeholder="QA name" />
+        </vs-col>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+          <vs-select placeholder="Priority" v-model="priority">
+            <vs-option label="Low" value="Low"> Low </vs-option>
+            <vs-option label="Normal" value="Normal"> Normal </vs-option>
+            <vs-option label="High" value="High"> High </vs-option>
+            <vs-option label="Urgent" value="Urgent"> Urgent </vs-option>
+            <vs-option label="Immediate" value="Immediate"> Immediate </vs-option>
+          </vs-select>
+        </vs-col>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+          <vs-input v-model="storyPoints" placeholder="Story points" />
+        </vs-col>
+      </vs-row>
+      
+      <vs-row>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+          <vs-input v-model="sprintName" placeholder="Sprint" />
+        </vs-col>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+          <vs-input type="date" v-model="releaseDate" />
+        </vs-col>
+      </vs-row>
+      
       <div v-if="isEditClicked">
         <vs-button v-on:click="updateTask">Update task</vs-button>
       </div>
@@ -110,7 +132,7 @@ export default {
       track: "",
       qaName: "",
       priority: "",
-      storyPoints: 0,
+      storyPoints: "",
       sprintName: "",
       releaseDate: "",
       tasks: [],
