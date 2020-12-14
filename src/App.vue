@@ -277,6 +277,7 @@ export default {
 </script>
 
 <style>
+@import 'App.css';
 * {
   font-family: 'Raleway', sans-serif;
 }
