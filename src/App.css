@@ -1,5 +1,31 @@
-.vs-input {
+* {
+    font-family: "Raleway", sans-serif;
+}
+
+body {
+    margin: 50px 10vw;
+}
+
+#app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.vs-input, #create-button, #update-button {
     margin: 5px 0px;
     height: 40px;
-    width: 100%;
+    width: 80% !important;
+}
+
+#create-button, #update-button {
+    margin-top: 20px;
+    border-radius: 50px;
+    width: 30% !important;
+}
+
+#button-container {
+    display: flex;
+    justify-content: center;
 }

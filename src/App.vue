@@ -1,7 +1,7 @@
 <template>
   <amplify-authenticator>
     <div id="task-app">
-      <h1>Task system</h1>
+      <h1>Task manager</h1>
       <p>{{ error }}</p>
       <vs-input type="hidden" v-model="id" />
       <vs-row>
@@ -17,13 +17,17 @@
         <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
           <vs-select placeholder="Status" v-model="status">
             <vs-option label="New" value="New"> New </vs-option>
-            <vs-option label="Under review" value="Under review"> Under review </vs-option>
+            <vs-option label="Under review" value="Under review">
+              Under review
+            </vs-option>
             <vs-option label="On hold" value="On hold"> On hold </vs-option>
             <vs-option label="Backlog" value="Backlog"> Backlog </vs-option>
             <vs-option label="Awaiting response" value="Awaiting response">
               Awaiting response
             </vs-option>
-            <vs-option label="Dev ready" value="Dev ready"> Dev ready </vs-option>
+            <vs-option label="Dev ready" value="Dev ready">
+              Dev ready
+            </vs-option>
             <vs-option label="Dev in Progress" value="Dev in Progress">
               Dev in Progress
             </vs-option>
@@ -34,7 +38,9 @@
             <vs-option label="Release Ready" value="Release Ready">
               Release Ready
             </vs-option>
-            <vs-option label="Committed" value="Committed"> Committed </vs-option>
+            <vs-option label="Committed" value="Committed">
+              Committed
+            </vs-option>
             <vs-option label="Released on Stage" value="Released on Stage">
               Released on Stage
             </vs-option>
@@ -47,18 +53,31 @@
             <vs-option label="Verified on Rapid" value="Verified on Rapid">
               Verified on Rapid
             </vs-option>
-            <vs-option label="Released on Standard" value="Released on Standard">
+            <vs-option
+              label="Released on Standard"
+              value="Released on Standard"
+            >
               Released on Standard
             </vs-option>
-            <vs-option label="Verified on Standard" value="Verified on Standard">
+            <vs-option
+              label="Verified on Standard"
+              value="Verified on Standard"
+            >
               Verified on Standard
             </vs-option>
-            <vs-option label="Completed" value="Completed"> Completed </vs-option>
-            <vs-option label="Cancelled" value="Cancelled"> Cancelled </vs-option>
+            <vs-option label="Completed" value="Completed">
+              Completed
+            </vs-option>
+            <vs-option label="Cancelled" value="Cancelled">
+              Cancelled
+            </vs-option>
           </vs-select>
         </vs-col>
         <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
-          <vs-input v-model="track" placeholder="Track" />
+          <vs-select placeholder="Track" v-model="track">
+            <vs-option label="Rapid" value="Rapid"> Rapid </vs-option>
+            <vs-option label="Standard" value="Standard"> Standard </vs-option>
+          </vs-select>
         </vs-col>
       </vs-row>
 
@@ -72,29 +91,44 @@
             <vs-option label="Normal" value="Normal"> Normal </vs-option>
             <vs-option label="High" value="High"> High </vs-option>
             <vs-option label="Urgent" value="Urgent"> Urgent </vs-option>
-            <vs-option label="Immediate" value="Immediate"> Immediate </vs-option>
+            <vs-option label="Immediate" value="Immediate">
+              Immediate
+            </vs-option>
           </vs-select>
         </vs-col>
         <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
           <vs-input v-model="storyPoints" placeholder="Story points" />
         </vs-col>
       </vs-row>
-      
+
       <vs-row>
         <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
           <vs-input v-model="sprintName" placeholder="Sprint" />
         </vs-col>
         <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
-          <vs-input type="date" v-model="releaseDate" />
+          <vs-input
+            type="date"
+            v-model="releaseDate"
+            placeholder="Release date"
+          />
         </vs-col>
       </vs-row>
-      
-      <div v-if="isEditClicked">
-        <vs-button v-on:click="updateTask">Update task</vs-button>
-      </div>
-      <div v-else>
-        <vs-button v-on:click="createTask">Create task</vs-button>
-      </div>
+
+      <vs-row>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="12">
+          <div v-if="isEditClicked" id="button-container">
+            <vs-button id="update-button" v-on:click="updateTask"
+              >Update task</vs-button
+            >
+          </div>
+          <div v-else id="button-container">
+            <vs-button id="create-button" v-on:click="createTask"
+              >Create task</vs-button
+            >
+          </div>
+        </vs-col>
+      </vs-row>
+
       <div v-for="task in tasks" :key="task.id">
         <h3>{{ task.name }}</h3>
         <p>Description: {{ task.description }}</p>
@@ -277,15 +311,5 @@ export default {
 </script>
 
 <style>
-@import 'App.css';
-* {
-  font-family: 'Raleway', sans-serif;
-}
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "App.css";
 </style>
