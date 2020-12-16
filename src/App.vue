@@ -2,7 +2,11 @@
   <amplify-authenticator>
     <div id="task-app">
       <h1>Task manager</h1>
-      <p>{{ error }}</p>
+      <vs-row>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="12">
+          <p class="error-para">{{ error }}</p>
+        </vs-col>
+      </vs-row>
       <vs-input type="hidden" v-model="id" />
       <vs-row>
         <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
@@ -136,7 +140,7 @@
         <p>Track: {{ task.track }}</p>
         <p>QA name: {{ task.qaName }}</p>
         <p>Priority: {{ task.priority }}</p>
-        <p>Stroy points: {{ task.storyPoints }}</p>
+        <p>Story points: {{ task.storyPoints }}</p>
         <p>Sprint name: {{ task.sprintName }}</p>
         <p>Release date: {{ task.releaseDate }}</p>
         <vs-button v-on:click="prepareTaskForEdit(task)">Update task</vs-button>
@@ -200,7 +204,8 @@ export default {
       };
       for (let key in task) {
         if (null === task[key] || "" === task[key]) {
-          this.error = key + " missing";
+          this.error =
+            key.charAt(0).toUpperCase() + key.slice(1) + " is missing.";
           console.log(task[key]);
           return key;
         }

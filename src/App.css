@@ -29,3 +29,9 @@ body {
     display: flex;
     justify-content: center;
 }
+
+.error-para {
+    display: flex;
+    justify-content: center;
+    color: #f05454;
+}
