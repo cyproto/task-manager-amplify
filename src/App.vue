@@ -20,6 +20,7 @@
         </vs-col>
         <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
           <vs-select placeholder="Status" v-model="status">
+            <vs-option label="Select" value="Select"> Select </vs-option>
             <vs-option label="New" value="New"> New </vs-option>
             <vs-option label="Under review" value="Under review">
               Under review
@@ -79,6 +80,7 @@
         </vs-col>
         <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
           <vs-select placeholder="Track" v-model="track">
+            <vs-option label="Select" value="Select"> Select </vs-option>
             <vs-option label="Rapid" value="Rapid"> Rapid </vs-option>
             <vs-option label="Standard" value="Standard"> Standard </vs-option>
           </vs-select>
@@ -91,6 +93,7 @@
         </vs-col>
         <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
           <vs-select placeholder="Priority" v-model="priority">
+            <vs-option label="Select" value="Select"> Select </vs-option>
             <vs-option label="Low" value="Low"> Low </vs-option>
             <vs-option label="Normal" value="Normal"> Normal </vs-option>
             <vs-option label="High" value="High"> High </vs-option>
@@ -214,15 +217,15 @@ export default {
         query: createTask,
         variables: { input: task },
       });
-      this.name = null;
-      this.description = null;
-      this.status = null;
-      this.track = null;
-      this.qaName = null;
-      this.priority = null;
-      this.storyPoints = null;
-      this.sprintName = null;
-      this.releaseDate = null;
+      this.name = '';
+      this.description = '';
+      this.status = 'Select';
+      this.track = 'Select';
+      this.qaName = '';
+      this.priority = 'Select';
+      this.storyPoints = '';
+      this.sprintName = '';
+      this.releaseDate = '';
       if (this.tasks.some((item) => item.name === task.name)) return;
       this.tasks = [...this.tasks, task];
     },
@@ -286,7 +289,7 @@ export default {
       };
       for (let key in task) {
         if (null === task[key] || "" === task[key]) {
-          this.error = key + " missing";
+          key.charAt(0).toUpperCase() + key.slice(1) + " is missing.";
           console.log(task[key]);
           return key;
         }
@@ -295,16 +298,16 @@ export default {
         query: updateTask,
         variables: { input: task },
       });
-      this.id = null;
-      this.name = null;
-      this.description = null;
-      this.status = null;
-      this.track = null;
-      this.qaName = null;
-      this.priority = null;
-      this.storyPoints = null;
-      this.sprintName = null;
-      this.releaseDate = null;
+      this.id = '';
+      this.name = '';
+      this.description = '';
+      this.status = 'Select';
+      this.track = 'Select';
+      this.qaName = '';
+      this.priority = 'Select';
+      this.storyPoints = '';
+      this.sprintName = '';
+      this.releaseDate = '';
       console.log(result);
       if (result.data.updateTask) {
         this.tasks = this.tasks.filter((item) => item.id !== task.id);
