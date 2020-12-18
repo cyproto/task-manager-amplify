@@ -175,14 +175,13 @@
           </vs-col>
         </vs-row>
 
-        <vs-row id="task-buttons">
-          <vs-col w="8"></vs-col>
-          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="2">
+        <vs-row justify="flex-end">
+          <vs-col w="1">
             <vs-button v-on:click="prepareTaskForEdit(task)"
               >Update task</vs-button
             >
           </vs-col>
-          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="2">
+          <vs-col w="1">
             <vs-button v-on:click="deleteTask(task)">Delete task</vs-button>
           </vs-col>
         </vs-row>
