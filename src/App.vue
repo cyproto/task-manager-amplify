@@ -136,18 +136,56 @@
         </vs-col>
       </vs-row>
 
-      <div v-for="task in tasks" :key="task.id">
-        <h3>{{ task.name }}</h3>
-        <p>Description: {{ task.description }}</p>
-        <p>Status: {{ task.status }}</p>
-        <p>Track: {{ task.track }}</p>
-        <p>QA name: {{ task.qaName }}</p>
-        <p>Priority: {{ task.priority }}</p>
-        <p>Story points: {{ task.storyPoints }}</p>
-        <p>Sprint name: {{ task.sprintName }}</p>
-        <p>Release date: {{ task.releaseDate }}</p>
-        <vs-button v-on:click="prepareTaskForEdit(task)">Update task</vs-button>
-        <vs-button v-on:click="deleteTask(task)">Delete task</vs-button>
+      <div v-for="task in tasks" :key="task.id" class="task-div">
+        <vs-row>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+            <h3>{{ task.name }}</h3>
+          </vs-col>
+        </vs-row>
+        <vs-row>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+            <p>Description: {{ task.description }}</p>
+          </vs-col>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+            <p>Status: {{ task.status }}</p>
+          </vs-col>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+            <p>Priority: {{ task.priority }}</p>
+          </vs-col>
+        </vs-row>
+
+        <vs-row>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+            <p>Track: {{ task.track }}</p>
+          </vs-col>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+            <p>QA name: {{ task.qaName }}</p>
+          </vs-col>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+            <p>Release date: {{ task.releaseDate }}</p>
+          </vs-col>
+        </vs-row>
+
+        <vs-row>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+            <p>Story points: {{ task.storyPoints }}</p>
+          </vs-col>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
+            <p>Sprint name: {{ task.sprintName }}</p>
+          </vs-col>
+        </vs-row>
+
+        <vs-row id="task-buttons">
+          <vs-col w="8"></vs-col>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="2">
+            <vs-button v-on:click="prepareTaskForEdit(task)"
+              >Update task</vs-button
+            >
+          </vs-col>
+          <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="2">
+            <vs-button v-on:click="deleteTask(task)">Delete task</vs-button>
+          </vs-col>
+        </vs-row>
       </div>
     </div>
     <amplify-sign-out></amplify-sign-out>
@@ -217,15 +255,15 @@ export default {
         query: createTask,
         variables: { input: task },
       });
-      this.name = '';
-      this.description = '';
-      this.status = 'Select';
-      this.track = 'Select';
-      this.qaName = '';
-      this.priority = 'Select';
-      this.storyPoints = '';
-      this.sprintName = '';
-      this.releaseDate = '';
+      this.name = "";
+      this.description = "";
+      this.status = "Select";
+      this.track = "Select";
+      this.qaName = "";
+      this.priority = "Select";
+      this.storyPoints = "";
+      this.sprintName = "";
+      this.releaseDate = "";
       if (this.tasks.some((item) => item.name === task.name)) return;
       this.tasks = [...this.tasks, task];
     },
@@ -298,16 +336,16 @@ export default {
         query: updateTask,
         variables: { input: task },
       });
-      this.id = '';
-      this.name = '';
-      this.description = '';
-      this.status = 'Select';
-      this.track = 'Select';
-      this.qaName = '';
-      this.priority = 'Select';
-      this.storyPoints = '';
-      this.sprintName = '';
-      this.releaseDate = '';
+      this.id = "";
+      this.name = "";
+      this.description = "";
+      this.status = "Select";
+      this.track = "Select";
+      this.qaName = "";
+      this.priority = "Select";
+      this.storyPoints = "";
+      this.sprintName = "";
+      this.releaseDate = "";
       console.log(result);
       if (result.data.updateTask) {
         this.tasks = this.tasks.filter((item) => item.id !== task.id);
