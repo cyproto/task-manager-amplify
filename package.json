@@ -10,7 +10,9 @@
   "dependencies": {
     "@aws-amplify/ui-vue": "^0.2.31",
     "aws-amplify": "^3.3.12",
+    "boxicons": "^2.0.7",
     "core-js": "^3.6.5",
+    "material-icons": "^0.5.2",
     "vue": "^2.6.11",
     "vuesax": "^4.0.1-alpha.25"
   },
