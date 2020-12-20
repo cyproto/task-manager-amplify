@@ -136,6 +136,10 @@
         </vs-col>
       </vs-row>
 
+      <h2>
+        Tasks
+      </h2>
+
       <div v-for="task in tasks" :key="task.id" class="task-div">
         <vs-row>
           <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
@@ -177,12 +181,14 @@
 
         <vs-row justify="flex-end">
           <vs-col w="1">
-            <vs-button v-on:click="prepareTaskForEdit(task)"
-              >Update task</vs-button
+            <vs-button icon v-on:click="prepareTaskForEdit(task)"
+              ><span class="material-icons">home</span></vs-button
             >
           </vs-col>
           <vs-col w="1">
-            <vs-button v-on:click="deleteTask(task)">Delete task</vs-button>
+            <vs-button icon v-on:click="deleteTask(task)"
+              ><vs-icon class="bx bx-delete"></vs-icon
+            ></vs-button>
           </vs-col>
         </vs-row>
       </div>

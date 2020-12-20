@@ -35,3 +35,15 @@ body {
     justify-content: center;
     color: #f05454;
 }
+
+.task-div {
+    padding: 10px 50px;
+    margin: 20px;
+    border-radius: 20px;
+    background-color: #fafafa;
+    box-shadow: 1px 1px 1px #dadada;
+}
+
+h3, p {
+    margin: 8px 0px !important;
+}
