@@ -13,6 +13,8 @@
     "boxicons": "^2.0.7",
     "core-js": "^3.6.5",
     "material-icons": "^0.5.2",
+    "sass": "^1.32.4",
+    "sass-loader": "^10.1.1",
     "vue": "^2.6.11",
     "vuesax": "^4.0.1-alpha.25"
   },

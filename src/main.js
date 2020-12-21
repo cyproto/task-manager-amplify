@@ -6,6 +6,7 @@ import '@aws-amplify/ui-vue';
 import aws_exports from './aws-exports';
 
 import 'vuesax/dist/vuesax.css'
+import 'material-icons/iconfont/material-icons.scss';
 
 Amplify.configure(aws_exports);
 
