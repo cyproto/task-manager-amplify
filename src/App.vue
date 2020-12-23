@@ -281,8 +281,8 @@ export default {
       this.storyPoints = "";
       this.sprintName = "";
       this.releaseDate = "";
-      if (this.tasks.some((item) => item.name === task.name)) return;
-      this.tasks = [...this.tasks, task];
+      this.tasks = null;
+      this.getTasks();
     },
     async getTasks() {
       const tasks = await API.graphql({
@@ -301,7 +301,8 @@ export default {
         },
       });
       if (result.data) {
-        this.tasks = this.tasks.filter((item) => item.id !== task.id);
+        this.tasks = null;
+        this.getTasks();
       }
     },
     prepareTaskForEdit(task) {
@@ -364,10 +365,8 @@ export default {
       this.sprintName = "";
       this.releaseDate = "";
       console.log(result);
-      if (result.data.updateTask) {
-        this.tasks = this.tasks.filter((item) => item.id !== task.id);
-      }
-      this.tasks = [...this.tasks, task];
+      this.tasks = null;
+      this.getTasks();
     },
   },
 };
